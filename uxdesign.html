@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Design – Figma Showcase | T. Kishan Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">T. Kishan</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="project-detail-section">
+    <section class="upcycle-hero">
+      <h1>🎨 UX Design – Figma Showcase</h1>
+      <p class="project-detail-subtitle">Figma has become an essential part of my development workflow. Through hands-on school projects and self-initiated concepts, I’ve explored how good design can elevate functionality and improve user experience. Below are some of the UX prototypes I’ve created using Figma — each one helping me sharpen my design thinking and user-centric mindset.</p>
+    </section>
+    <section class="upcycle-card">
+      <!-- Velvet Oasis Hotel -->
+      <div class="project-section bg-primary">
+        <h2 class="section-title">🏨 Velvet Oasis Hotel – Booking Website Prototype</h2>
+        <p class="section-desc">This was one of my earliest Figma projects where I created a modern frontend design for a fictional hotel brand called Velvet Oasis. The goal was to simulate a sleek, mobile-friendly booking platform with clean visuals and intuitive navigation.</p>
+        <ul class="section-list">
+          <li>Designing a luxurious and calming UI theme</li>
+          <li>Structuring user flows for booking and room browsing</li>
+          <li>Using auto layout and component libraries for consistency</li>
+        </ul>
+        <p class="section-desc">This project helped me understand how to balance branding with usability and encouraged me to explore layout responsiveness in design tools.</p>
+        <!-- Velvet Oasis Carousel (Consultancy/VHSearch style) -->
+        <div class="carousel-container" style="margin-bottom:2.5rem;">
+          <div class="carousel-inner">
+            <button class="carousel-arrow left" onclick="showVelvetOasisSlide(currentVelvetOasis-1)" aria-label="Previous image">&#8592;</button>
+            <img id="velvet-oasis-img" class="carousel-image" src="images/UXDesignFunctionRooms.png" alt="Function Rooms Page" style="cursor: zoom-in;" />
+            <button class="carousel-arrow right" onclick="showVelvetOasisSlide(currentVelvetOasis+1)" aria-label="Next image">&#8594;</button>
+          </div>
+          <div id="velvet-oasis-caption" class="carousel-caption">🖼️ Function Rooms Page<br><br>A dedicated page for business and event facilities, structured to highlight different room capacities, amenities, and booking options.</div>
+          <div class="carousel-dots">
+            <span class="carousel-dot" onclick="showVelvetOasisSlide(0)"></span>
+            <span class="carousel-dot" onclick="showVelvetOasisSlide(1)"></span>
+            <span class="carousel-dot" onclick="showVelvetOasisSlide(2)"></span>
+            <span class="carousel-dot" onclick="showVelvetOasisSlide(3)"></span>
+          </div>
+        </div>
+      </div>
+      <!-- VHSearch Dashboard -->
+      <!-- Figma for Development Support (Combined VHSearch & UpCycle) -->
+      <div class="project-section bg-secondary figma-support-card" style="background: linear-gradient(120deg, #e9e6f7 60%, #b3b7ee 100%); box-shadow: 0 4px 32px 0 rgba(25,42,81,0.10); border-radius: 1.5rem; padding: 2.5rem 2rem 2.5rem 2rem; margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.2rem;">
+          <div style="font-size:2.2rem;line-height:1;">🛠️</div>
+          <div>
+            <h2 class="section-title">Figma for Development Support</h2>
+            <div class="section-desc" style="font-size:1.15rem; color:#2b2b2b; margin-bottom:0.7rem;">While working on projects like <strong>VHSearch</strong> and <strong>UpCycle</strong>, I used Figma not just for visuals, but as a practical tool to plan, structure, and streamline development.</div>
+            <div class="section-desc" style="margin-bottom:1.2rem;">For both projects, I started with low-fidelity prototypes to map out user flows, key layouts, and UI structure before writing any code. These wireframes served as a shared reference point for both solo and collaborative development.</div>
+          </div>
+        </div>
+        <div class="figma-support-flex" style="display: flex; flex-wrap: wrap; gap: 2.5rem; align-items: flex-start; justify-content: space-between;">
+          <!-- VHSearch Block -->
+          <div style="flex:1 1 320px; min-width:280px; max-width:420px; background:rgba(255,255,255,0.93); border-radius:1.1rem; box-shadow:0 2px 12px 0 rgba(25,42,81,0.07); padding:1.5rem 1.2rem 1.7rem 1.2rem; margin-bottom:1.2rem;">
+            <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.5rem;"><span style="font-size:1.3rem;">📧</span><span style="font-weight:600;color:#3a4bb3;">VHSearch</span></div>
+            <ul class="section-list" style="margin-bottom:1.1rem;">
+              <li>Low-fidelity wireframes of the dashboard and smart reply flow</li>
+              <li>User journey layouts for composing and managing replies</li>
+              <li>Mockups for role-based access and interface logic</li>
+            </ul>
+            <div class="carousel-container" style="margin-bottom:1.2rem;">
+              <div class="carousel-inner">
+                <button class="carousel-arrow left" onclick="showVHSearchSlide(currentVHSearch-1)" aria-label="Previous image">&#8592;</button>
+                <img id="vhsearch-img" class="carousel-image" src="images/UXDesignVHSearchEarlyPrototype.png" alt="VHSearch Early Prototype" style="cursor: zoom-in;" />
+                <button class="carousel-arrow right" onclick="showVHSearchSlide(currentVHSearch+1)" aria-label="Next image">&#8594;</button>
+              </div>
+              <div id="vhsearch-caption" class="carousel-caption">Early prototype – VHSearch user profile page in Figma.</div>
+              <div class="carousel-dots">
+                <span class="carousel-dot" onclick="showVHSearchSlide(0)"></span>
+                <span class="carousel-dot" onclick="showVHSearchSlide(1)"></span>
+              </div>
+            </div>
+            <div class="section-desc" style="font-size:0.99rem; color:#444; background:rgba(230,235,255,0.55); border-radius:0.7rem; padding:0.7rem 1rem; margin-top:0.2rem;">Interestingly, this early Figma prototype ended up looking very different from the final product. After receiving feedback from our client, VHA Consultants Pte. Ltd., we had to pivot and adjust several design elements to better align with their operational needs and preferences. This was a valuable reminder that UX is about listening, adapting, and building what truly serves the user.</div>
+          </div>
+          <!-- UpCycle Block -->
+          <div style="flex:1 1 320px; min-width:280px; max-width:420px; background:rgba(255,255,255,0.93); border-radius:1.1rem; box-shadow:0 2px 12px 0 rgba(25,42,81,0.07); padding:1.5rem 1.2rem 1.7rem 1.2rem; margin-bottom:1.2rem;">
+            <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.5rem;"><span style="font-size:1.3rem;">🚲</span><span style="font-weight:600;color:#3a4bb3;">UpCycle</span></div>
+            <ul class="section-list" style="margin-bottom:1.1rem;">
+              <li>Initial wireframes for the Store Finder and core checkout pages</li>
+              <li>Layout for the Store Finder feature</li>
+            </ul>
+            <div class="carousel-container" style="margin-bottom:1.2rem;">
+              <div class="carousel-inner">
+                <button class="carousel-arrow left" onclick="showUpCycleSlide(currentUpCycle-1)" aria-label="Previous image">&#8592;</button>
+                <img id="upcycle-img" class="carousel-image" src="images/UXDesignUpCycle.png" alt="UpCycle Wireframe" style="cursor: zoom-in;" />
+                <button class="carousel-arrow right" onclick="showUpCycleSlide(currentUpCycle+1)" aria-label="Next image">&#8594;</button>
+              </div>
+              <div id="upcycle-caption" class="carousel-caption">Store Finder wireframe – UpCycle checkout page in Figma.</div>
+              <div class="carousel-dots">
+                <span class="carousel-dot" onclick="showUpCycleSlide(0)"></span>
+                <span class="carousel-dot" onclick="showUpCycleSlide(1)"></span>
+              </div>
+            </div>
+            <div class="section-desc" style="font-size:0.99rem; color:#444; background:rgba(230,235,255,0.55); border-radius:0.7rem; padding:0.7rem 1rem; margin-top:0.2rem;">This project marked one of my first experiences using Figma for interface design. While the visuals may not reflect my current skill level, it was a key stepping stone in my learning journey. It taught me the fundamentals of layout planning, user flow thinking, and how valuable even simple wireframes can be during development.</div>
+          </div>
+        </div>
+        <hr style="border:none;border-top:1.5px solid #b3b7ee;opacity:0.18;margin:2.2rem 0 0.5rem 0;">
+        <div class="section-desc" style="margin-top:1.2rem; font-size:1.08rem; color:#2b2b2b;">Using Figma during development helped me:</div>
+        <ul class="section-list" style="margin-bottom:0.7rem;">
+          <li>Clarify the user experience early in the process</li>
+          <li>Share ideas quickly with teammates</li>
+          <li>Minimize rework by solving layout issues upfront</li>
+          <li>Align technical implementation with clear, structured designs</li>
+        </ul>
+        <div class="section-desc" style="margin-top:0.7rem;">This experience showed me how valuable low-fidelity prototyping is in real-world projects. It allows me to plan with intention and code with confidence. Today, Figma is a regular part of my workflow, especially when approaching complex UI logic or collaborating with others.</div>
+      </div>
+      <!-- Royal Sporting House -->
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">🏬 Royal Sporting House – Digitalisation Proposal</h2>
+        <p class="section-desc">For a school digitalisation project, I designed a modern website concept for Royal Sporting House, a popular sportswear retailer. The objective was to help the brand strengthen its online presence with an intuitive, mobile-friendly interface.</p>
+        <ul class="section-list">
+          <li>A clean product display grid</li>
+          <li>Streamlined navigation</li>
+          <li>A bold, energetic color scheme that aligned with the brand’s sporty identity</li>
+        </ul>
+        <p class="section-desc">While the project was conceptual and not implemented, it gave me valuable experience in using design to address real business needs — particularly for established brands looking to evolve digitally.</p>
+        <!-- Royal Sporting House Carousel (Consultancy/VHSearch style) -->
+        <div class="carousel-container" style="margin-bottom:2.5rem;">
+          <div class="carousel-inner">
+            <button class="carousel-arrow left" onclick="showRSHSlide(currentRSH-1)" aria-label="Previous image">&#8592;</button>
+            <img id="rsh-img" class="carousel-image" src="images/UXDesignRSHHome.png" alt="Royal Sporting House Homepage" style="cursor: zoom-in;" />
+            <button class="carousel-arrow right" onclick="showRSHSlide(currentRSH+1)" aria-label="Next image">&#8594;</button>
+          </div>
+          <div id="rsh-caption" class="carousel-caption">Homepage concept – Royal Sporting House in Figma.</div>
+          <div class="carousel-dots">
+            <span class="carousel-dot" onclick="showRSHSlide(0)"></span>
+            <span class="carousel-dot" onclick="showRSHSlide(1)"></span>
+            <span class="carousel-dot" onclick="showRSHSlide(2)"></span>
+            <span class="carousel-dot" onclick="showRSHSlide(3)"></span>
+            <span class="carousel-dot" onclick="showRSHSlide(4)"></span>
+          </div>
+        </div>
+      </div>
+      <!-- What I've Gained -->
+      <div class="project-section bg-primary">
+        <h2 class="section-title">💡 What I’ve Gained</h2>
+        <ul class="section-list">
+          <li>Strong foundation in Design Thinking</li>
+          <li>Practical experience with wireframing and prototyping tools</li>
+          <li>Confidence in using Figma as part of real development workflows</li>
+          <li>A growing appreciation for how design and code work together to build great user experiences</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <div class="back-to-projects-fixed">
+  <!-- Apple-style minimal modal for image zoom (moved outside card for true centering) -->
+  <div id="appleLightboxModal" class="apple-lightbox-modal" tabindex="-1">
+    <div class="apple-lightbox-content" role="dialog" aria-modal="true" aria-labelledby="apple-lightbox-caption">
+      <button class="apple-lightbox-close" onclick="closeAppleLightbox()" aria-label="Close image viewer">&times;</button>
+      <img id="apple-lightbox-img" class="apple-lightbox-img" src="" alt="" />
+      <div id="apple-lightbox-caption" class="apple-lightbox-caption"></div>
+    </div>
+  </div>
+    <a href="projects.html" class="wow-back-btn">&#8592; Back to Projects</a>
+  </div>
+  <script>
+    // --- Velvet Oasis Carousel ---
+    const velvetOasisImages = [
+      {
+        src: 'images/UXDesignFunctionRooms.png',
+        caption: '🖼️ Function Rooms Overview\n\nA Figma screen displaying the available function rooms at Velvet Oasis Hotel. This overview layout showcases different room options visually, allowing guests to browse facilities before diving into specific details.'
+      },
+      {
+        src: 'images/UXDesignHotelEditorPage.png',
+        caption: '🖼️ Hotel Editor Page (Design Concept)\n\nA behind-the-scenes look at the Figma workspace used to prototype the Velvet Oasis Hotel UI. This screenshot highlights the layout planning, component organization, and design process that went into building a clean and consistent user experience..'
+      },
+      {
+        src: 'images/UXDesignHotelRoomTypeCarousel.png',
+        caption: '🖼️ Room Selection Interface\n\nA room details page that allows users to select different room types and view corresponding information. It includes a built-in image carousel showcasing what each room looks like, providing guests with a clearer visual preview before booking.'
+      },
+      {
+        src: 'images/UXDesignMessagePage.png',
+        caption: '🖼️ Messaging/Enquiry Interface\n\nA sleek and modern contact page allowing guests to send direct messages or enquiries — designed with clarity and ease of use in mind.'
+      },
+      {
+        src: 'images/UXDesignVelvetOasisHomepage.png',
+        caption: '🖼️ Homepage Layout\n\nThe main landing page for Velvet Oasis Hotel, featuring a clean hero section, smooth navigation, and elegant call-to-action for room booking.'
+      }
+    ];
+    let currentVelvetOasis = 0;
+    const velvetOasisImg = document.getElementById('velvet-oasis-img');
+    const velvetOasisCaption = document.getElementById('velvet-oasis-caption');
+    function showVelvetOasisSlide(idx) {
+      currentVelvetOasis = (idx + velvetOasisImages.length) % velvetOasisImages.length;
+      velvetOasisImg.src = velvetOasisImages[currentVelvetOasis].src;
+      velvetOasisImg.alt = velvetOasisImages[currentVelvetOasis].caption.split('\n')[0];
+      velvetOasisCaption.innerHTML = velvetOasisImages[currentVelvetOasis].caption.replace(/\n/g, '<br>');
+    }
+    // --- VHSearch Carousel ---
+    const vhsearchImages = [
+      {
+        src: 'images/UXDesignVHSearchEarlyPrototype.png',
+        caption: 'Early prototype – VHSearch user profile page in Figma.'
+      },
+      {
+        src: 'images/UXDesignVHSearchEarlyPrototype2.png',
+        caption: 'Early prototype – VHSearch user dashboard in Figma.'
+      }
+    ];
+    let currentVHSearch = 0;
+    const vhsearchImg = document.getElementById('vhsearch-img');
+    const vhsearchCaption = document.getElementById('vhsearch-caption');
+    function showVHSearchSlide(idx) {
+      currentVHSearch = (idx + vhsearchImages.length) % vhsearchImages.length;
+      vhsearchImg.src = vhsearchImages[currentVHSearch].src;
+      vhsearchImg.alt = vhsearchImages[currentVHSearch].caption;
+      vhsearchCaption.textContent = vhsearchImages[currentVHSearch].caption;
+    }
+    // --- UpCycle Carousel ---
+    const upcycleImages = [
+      { src: 'images/UXDesignUpCycle.png', caption: 'Homepage wireframe – UpCycle e-commerce in Figma.' },
+      { src: 'images/UXDesignUpCycleCheckout.png', caption: 'Checkout flow – UpCycle wireframe.' }
+    ];
+    let currentUpCycle = 0;
+    const upcycleImg = document.getElementById('upcycle-img');
+    const upcycleCaption = document.getElementById('upcycle-caption');
+    function showUpCycleSlide(idx) {
+      currentUpCycle = (idx + upcycleImages.length) % upcycleImages.length;
+      upcycleImg.src = upcycleImages[currentUpCycle].src;
+      upcycleImg.alt = upcycleImages[currentUpCycle].caption;
+      upcycleCaption.textContent = upcycleImages[currentUpCycle].caption;
+    }
+    // --- Royal Sporting House Carousel ---
+    const rshImages = [
+      { src: 'images/UXDesignRSHHome.png', caption: 'Homepage concept – Royal Sporting House in Figma.' },
+      { src: 'images/UXDesignRSHShopping.png', caption: 'Product page – Royal Sporting House.' },
+      { src: 'images/UXDesignRSHEditorPage.png', caption: 'Editor page – Royal Sporting House.' },
+      { src: 'images/UXDesignRSHFooter.png', caption: 'Footer – Royal Sporting House.' },
+      { src: 'images/UXDesignRSHCustomerReviews.png', caption: 'Customer reviews – Royal Sporting House.' }
+    ];
+    let currentRSH = 0;
+    const rshImg = document.getElementById('rsh-img');
+    const rshCaption = document.getElementById('rsh-caption');
+    function showRSHSlide(idx) {
+      currentRSH = (idx + rshImages.length) % rshImages.length;
+      rshImg.src = rshImages[currentRSH].src;
+      rshImg.alt = rshImages[currentRSH].caption;
+      rshCaption.textContent = rshImages[currentRSH].caption;
+    }
+    // --- Apple-style modal (lightbox) logic (shared for all carousels) ---
+    const appleLightboxModal = document.getElementById('appleLightboxModal');
+    const appleLightboxImg = document.getElementById('apple-lightbox-img');
+    const appleLightboxCaption = document.getElementById('apple-lightbox-caption');
+    function openAppleLightbox(src, caption) {
+      appleLightboxImg.src = src;
+      appleLightboxImg.alt = caption;
+      appleLightboxCaption.textContent = caption;
+      appleLightboxModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAppleLightbox() {
+      appleLightboxModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    velvetOasisImg.addEventListener('click', function() {
+      openAppleLightbox(velvetOasisImages[currentVelvetOasis].src, velvetOasisImages[currentVelvetOasis].caption);
+    });
+    vhsearchImg.addEventListener('click', function() {
+      openAppleLightbox(vhsearchImages[currentVHSearch].src, vhsearchImages[currentVHSearch].caption);
+    });
+    upcycleImg.addEventListener('click', function() {
+      openAppleLightbox(upcycleImages[currentUpCycle].src, upcycleImages[currentUpCycle].caption);
+    });
+    rshImg.addEventListener('click', function() {
+      openAppleLightbox(rshImages[currentRSH].src, rshImages[currentRSH].caption);
+    });
+    // Allow closing by clicking outside the content
+    appleLightboxModal.addEventListener('click', function(e) {
+      if (e.target === appleLightboxModal) closeAppleLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!appleLightboxModal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeAppleLightbox();
+    });
+    // Initialize all carousels
+    showVelvetOasisSlide(0);
+    showVHSearchSlide(0);
+    showUpCycleSlide(0);
+    showRSHSlide(0);
+  </script>
+</body>
+</html>

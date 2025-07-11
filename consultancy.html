@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultancy Website | T. Kishan Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .wow-back-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--primary) 60%, var(--teal) 100%);
+      color: #fff;
+      padding: 1rem 2.7rem;
+      border-radius: 2.5rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 24px 0 rgba(150,122,161,0.18), 0 2px 8px 0 rgba(25,42,81,0.10);
+      transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.13s;
+      letter-spacing: 0.7px;
+      border: none;
+      outline: none;
+      margin: 0 auto 0 auto;
+      margin-top: 1.5rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.5s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    .wow-back-btn::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 180%;
+      height: 180%;
+      background: radial-gradient(circle, var(--secondary) 0%, transparent 80%);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .wow-back-btn:hover::after {
+      opacity: 0.13;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .wow-back-btn:hover, .wow-back-btn:focus {
+      background: linear-gradient(90deg, var(--secondary) 60%, var(--teal) 100%);
+      color: #fff;
+      box-shadow: 0 8px 32px 0 rgba(25,42,81,0.18);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .back-to-projects-fixed {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .project-gallery {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2rem 0 2.5rem 0;
+      flex-wrap: wrap;
+    }
+    .project-gallery img {
+      max-width: 220px;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px 0 rgba(25,42,81,0.13);
+      transition: transform 0.18s, box-shadow 0.18s;
+      cursor: pointer;
+      object-fit: cover;
+      background: linear-gradient(120deg, var(--secondary) 60%, var(--primary) 100%);
+      aspect-ratio: 4/3;
+    }
+    .project-gallery img:hover {
+      transform: scale(1.06) rotate(-1.5deg);
+      box-shadow: 0 8px 32px 0 rgba(150,122,161,0.18);
+      z-index: 2;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 540px;
+      margin: 2.5rem auto 2.5rem auto;
+      background: rgba(255,255,255,0.92);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px 0 rgba(25,42,81,0.10);
+      padding: 2.2rem 1.5rem 2.7rem 1.5rem;
+      text-align: center;
+    }
+    .carousel-image {
+      width: 100%;
+      max-width: 480px;
+      max-height: 340px;
+      border-radius: 1.3rem;
+      box-shadow: 0 2px 16px 0 rgba(25,42,81,0.13);
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+      z-index: 1;
+      position: relative;
+      will-change: transform;
+    }
+    .carousel-image:active,
+    .carousel-image:focus,
+    .carousel-image:hover {
+      transform: scale(1.13);
+      box-shadow: 0 8px 32px 0 rgba(150,122,161,0.18);
+    }
+    /* Minimal Apple-style modal for image zoom */
+    .apple-lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.65);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 0.28s cubic-bezier(.4,0,.2,1);
+      opacity: 0;
+      box-sizing: border-box;
+    }
+    .apple-lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+      animation: fadeInAppleModal 0.32s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeInAppleModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .apple-lightbox-content {
+      background: none;
+      border-radius: 1.2rem;
+      box-shadow: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 96vw;
+      max-height: 92vh;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .apple-lightbox-img {
+      display: block;
+      max-width: 90vw;
+      max-height: 75vh;
+      width: auto;
+      height: auto;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 32px 0 rgba(25,42,81,0.13);
+      object-fit: contain;
+      background: rgba(255,255,255,0.97);
+      margin-bottom: 1.1rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: zoom-out;
+      padding: 0.7rem;
+      box-sizing: border-box;
+    }
+    .apple-lightbox-caption {
+      color: #222;
+      font-size: 1.13rem;
+      text-align: center;
+      background: rgba(255,255,255,0.97);
+      border-radius: 0.7rem;
+      box-shadow: 0 2px 12px 0 rgba(25,42,81,0.10);
+      padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+      margin-bottom: 0.5rem;
+      max-width: 80vw;
+      display: inline-block;
+      text-shadow: none;
+    }
+    .apple-lightbox-close {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: rgba(0,0,0,0.32);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 2px 8px 0 rgba(25,42,81,0.10);
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .apple-lightbox-close:hover { background: rgba(0,0,0,0.65); }
+    .carousel-caption {
+      margin-top: 1.3rem;
+      font-size: 1.13rem;
+      color: var(--teal);
+      min-height: 2.5rem;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px 0 rgba(25,42,81,0.10);
+      transition: background 0.2s;
+      z-index: 3;
+    }
+    .carousel-arrow:hover {
+      background: var(--secondary);
+    }
+    .carousel-arrow.left { left: 0.5rem; }
+    .carousel-arrow.right { right: 0.5rem; }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7); /* Stronger dimming overlay */
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s cubic-bezier(.4,0,.2,1);
+    }
+    .modal.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      animation: modalFadeIn 0.32s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      box-shadow: 0 8px 40px 0 rgba(25,42,81,0.18);
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0;
+      opacity: 0;
+      animation: modalZoomIn 0.32s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .modal.active .modal-content {
+      opacity: 1;
+    }
+    @keyframes modalZoomIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-content img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 80vw;
+      max-height: 70vh;
+      border-radius: 1.2rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 24px 0 rgba(25,42,81,0.13);
+      object-fit: contain;
+      background: #f7f7fa;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: zoom-out;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .modal-content img:active {
+      transform: scale(0.98);
+    }
+    .modal-close {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      align-self: flex-end;
+      margin-bottom: 0.5rem;
+      margin-right: -0.5rem;
+      margin-top: -0.5rem;
+      z-index: 2;
+      box-shadow: 0 2px 8px 0 rgba(25,42,81,0.10);
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: var(--secondary); }
+
+    @media (max-width: 900px) {
+      .project-gallery {
+        gap: 1rem;
+      }
+      .project-gallery img {
+        max-width: 140px;
+      }
+      .carousel-container { max-width: 98vw; padding: 1.2rem 0.2rem 1.5rem 0.2rem; }
+      .carousel-image { max-width: 95vw; max-height: 200px; }
+      .modal-content img { max-width: 98vw; max-height: 45vh; }
+    }
+    @media (max-width: 600px) {
+      .project-gallery {
+        gap: 0.5rem;
+      }
+      .project-gallery img {
+        max-width: 100px;
+      }
+      .carousel-container { max-width: 99vw; padding: 0.7rem 0.1rem 1rem 0.1rem; }
+      .carousel-image { max-width: 99vw; max-height: 120px; }
+      .modal-content img { max-width: 99vw; max-height: 30vh; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">T. Kishan</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="project-detail-section">
+    <section class="upcycle-hero">
+      <h1>💼 Consultancy Website</h1>
+      <p class="project-detail-subtitle">Multi-page responsive website for a consultancy business concept. Focused on layout, reusability, and accessibility.</p>
+    </section>
+    <section class="upcycle-card">
+      <!-- Apple-inspired Sectioned Card Layout -->
+      <div class="carousel-container">
+        <button class="carousel-arrow left" onclick="prevSlide()" aria-label="Previous image">&#8592;</button>
+        <img id="carousel-img" class="carousel-image" src="images/TKConsultancyHomepage.png" alt="Consultancy Homepage" style="cursor: zoom-in;" />
+        <button class="carousel-arrow right" onclick="nextSlide()" aria-label="Next image">&#8594;</button>
+        <div id="carousel-caption" class="carousel-caption">Homepage – Clean, modern landing page for the consultancy business.</div>
+      </div>
+      <div class="project-section bg-primary">
+        <h2 class="section-title" style="margin-top:0">📁 Project Overview</h2>
+        <p class="section-desc">This website was developed as part of a school web development project where we were tasked with creating a concept website for a consultancy firm. The goal was to design a clean, modern, multi-page site that reflected the professionalism and clarity expected from real-world businesses. I treated the assignment as if I were building for an actual client, applying research and design principles throughout.</p>
+      </div>
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">👨‍💻 My Role</h2>
+        <ul class="section-list">
+          <li>Planned the structure and flow of pages</li>
+          <li>Designed layouts using HTML and CSS</li>
+          <li>Styled the interface for visual consistency</li>
+          <li>Added JavaScript interactivity for a smoother UX</li>
+        </ul>
+        <p class="section-desc">I focused on making the site intuitive, responsive, and polished across devices.</p>
+      </div>
+      <div class="project-section bg-primary">
+        <h2 class="section-title">🛠 Tech Stack</h2>
+        <ul class="section-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">🚀 The Journey</h2>
+        <p class="section-desc">I began by exploring real consultancy websites to understand how they present services and build trust. Drawing inspiration, I built a homepage, services section, and contact page with a professional, streamlined layout.</p>
+        <p class="section-desc">I prioritized responsive design and smooth navigation, ensuring the website looked sharp on both desktop and mobile.</p>
+      </div>
+      <div class="project-section bg-primary">
+        <h2 class="section-title">📚 What I Learned</h2>
+        <ul class="section-list">
+          <li>Responsive layouts with Flexbox and CSS Grid</li>
+          <li>Structuring clear, accessible multipage websites</li>
+          <li>Visual hierarchy and design consistency</li>
+          <li>Writing maintainable, organized front-end code</li>
+        </ul>
+      </div>
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">✅ Outcome</h2>
+        <p class="section-desc">The final result was a fully functional concept website that captured the tone and polish of a real consultancy firm. It gave me confidence in front-end development and deepened my interest in UI/UX design.</p>
+        <p class="section-desc">This project was an early step in my development journey. Looking back, it helped me identify key areas for growth in both coding and design; this growth is something I’ve actively pursued through more complex projects since then.</p>
+      </div>
+    </section>
+  </main>
+  <!-- Apple-style minimal modal for image zoom (moved outside card for true centering) -->
+  <div id="appleLightboxModal" class="apple-lightbox-modal" tabindex="-1">
+    <div class="apple-lightbox-content" role="dialog" aria-modal="true" aria-labelledby="apple-lightbox-caption">
+      <button class="apple-lightbox-close" onclick="closeAppleLightbox()" aria-label="Close image viewer">&times;</button>
+      <img id="apple-lightbox-img" class="apple-lightbox-img" src="" alt="" />
+      <div id="apple-lightbox-caption" class="apple-lightbox-caption"></div>
+    </div>
+  </div>
+  <div class="back-to-projects-fixed">
+    <a href="projects.html" class="wow-back-btn">&#8592; Back to Projects</a>
+  </div>
+  <script>
+    const images = [
+      {
+        src: 'images/TKConsultancyHomepage.png',
+        caption: 'Homepage – Clean, modern landing page for the consultancy business.'
+      },
+      {
+        src: 'images/TKConsultancyServicespage.png',
+        caption: 'Services Page – Overview of consultancy services with details.'
+      },
+      {
+        src: 'images/TKConsultancyContactpage.png',
+        caption: 'Contact Page – Simple, accessible contact form and info.'
+      },
+      {
+        src: 'images/TKConsultancyServicespage2.png',
+        caption: 'Services Page – Consultation booking and scheduling with cost estimation.'
+      },
+      {
+        src: 'images/TKConsultancyMobile.png',
+        caption: 'Mobile View – Responsive design for consultancy website on mobile devices.'
+      }
+    ];
+    let current = 0;
+    const imgEl = document.getElementById('carousel-img');
+    const captionEl = document.getElementById('carousel-caption');
+    function showSlide(idx) {
+      current = (idx + images.length) % images.length;
+      imgEl.src = images[current].src;
+      imgEl.alt = images[current].caption;
+      captionEl.textContent = images[current].caption;
+    }
+    function prevSlide() { showSlide(current - 1); }
+    function nextSlide() { showSlide(current + 1); }
+    // Apple-style modal (lightbox) logic
+    const appleLightboxModal = document.getElementById('appleLightboxModal');
+    const appleLightboxImg = document.getElementById('apple-lightbox-img');
+    const appleLightboxCaption = document.getElementById('apple-lightbox-caption');
+    function openAppleLightbox() {
+      appleLightboxImg.src = images[current].src;
+      appleLightboxImg.alt = images[current].caption;
+      appleLightboxCaption.textContent = images[current].caption;
+      appleLightboxModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAppleLightbox() {
+      appleLightboxModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    imgEl.addEventListener('click', function(e) {
+      openAppleLightbox();
+    });
+    // Allow closing by clicking outside the content
+    appleLightboxModal.addEventListener('click', function(e) {
+      // Only close if click is directly on the overlay, not the content or image
+      if (e.target === appleLightboxModal) closeAppleLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!appleLightboxModal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeAppleLightbox();
+    });
+    // Initialize first slide
+    showSlide(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T. Kishan Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">T. Kishan</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <main class="hero-section">
+    <!-- Animated background restored and color-matched -->
+    <div class="hero-flex hero-flex-column">
+      <div class="hero-media-card">
+        <div class="video-label">Introductory Video</div>
+        <video class="hero-media-video" src="media/0711.mp4" poster="media/intro-poster.jpg" controls>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title"><span class="highlight">Welcome!</span></h1>
+        <p class="personal-statement">
+          Hi, I'm Kishan.<br>
+          I'm a curious, hands-on learner who loves building things that solve real problems. Whether it's a full-stack web app, a quick automation script, or a design prototype. I enjoy bringing ideas to life with technology!
+        </p>
+        <p class="personal-statement">
+          What excites me most about IT is its potential to make everyday experiences smarter and more meaningful. I’m especially drawn to full-stack development because it combines logic and creativity; both the back-end brain and front-end experience.
+        </p>
+        <p class="personal-statement">
+          I'm always learning, experimenting, and collaborating with others who love to create. Outside of coding, I enjoy exploring new tech trends and sketching out app ideas on figma that could one day become something real.
+        </p>
+        <a href="projects.html" class="cta-btn">View My Projects</a>
+      </div>
+    </div>
+  </main>
+
+
+<style>
+.video-label {
+  position: absolute;
+  top: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(25,42,81,0.82);
+  color: #fff;
+  font-size: 1.13rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.55rem 1.6rem 0.55rem 1.3rem;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(25,42,81,0.10);
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.video-label::before {
+  content: '\25B6'; /* Unicode play icon */
+  font-size: 1.15em;
+  margin-right: 0.2em;
+  opacity: 0.85;
+}
+.hero-media-card {
+  position: relative;
+  min-width: 320px;
+  max-width: 520px;
+  /* Remove width: 100% to allow centering */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgba(255,255,255,0.97); /* fallback */
+  background: #e3eaf5;
+  border-radius: 2.2rem;
+  box-shadow: 0 8px 32px 0 rgba(25,42,81,0.10);
+  padding: 2.2rem 1.5rem 2.7rem 1.5rem;
+  margin: 1.5rem 0 2.2rem 0;
+  animation: fadeInUp 1.1s cubic-bezier(.23,1.01,.32,1) both;
+}
+.hero-media-video {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px 0 rgba(25,42,81,0.13);
+  object-fit: cover;
+  background: #000;
+  margin: 0 auto;
+  display: block;
+  transition: box-shadow 0.18s, transform 0.13s;
+}
+.hero-media-video:focus,
+.hero-media-video:hover {
+  box-shadow: 0 8px 32px 0 rgba(150,122,161,0.18);
+  transform: scale(1.01);
+}
+@media (max-width: 1100px) {
+  .hero-flex {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: stretch;
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+  }
+  .hero-content, .hero-media-card {
+    max-width: 98vw;
+    border-radius: 1.2rem;
+    padding: 1.5rem 0.7rem 1.2rem 0.7rem;
+  }
+}
+@media (max-width: 700px) {
+  .hero-section {
+    min-height: unset;
+    padding: 0;
+  }
+  .hero-flex {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.2rem 0.2rem 0.7rem 0.2rem;
+  }
+  .hero-content, .hero-media-card {
+    max-width: 99vw;
+    border-radius: 0.7rem;
+    padding: 1rem 0.2rem 0.7rem 0.2rem;
+  }
+  .hero-media-video {
+    max-width: 99vw;
+    border-radius: 0.5rem;
+  }
+  .hero-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Add new CSS for vertical layout and centering */
+.hero-flex.hero-flex-column {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  padding: 2.2rem 2rem 1.2rem 2rem;
+  width: auto;
+  min-height: unset;
+}
+.hero-section {
+  display: block;
+  min-height: unset;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+.hero-media-card {
+  margin: 1.5rem auto 2.2rem auto;
+}
+.hero-content {
+  align-items: center;
+  text-align: center;
+}
+</style>
+      <!-- Removed duplicate hero content section -->
+    </div>
+  </main>
+
+  <!-- Footer removed: Contact info is now only on the Contact page -->
+</body>
+</html>

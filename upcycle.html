@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UpCycle – E-Commerce Platform | T. Kishan Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .upcycle-hero {
+      background: linear-gradient(120deg, var(--primary) 0%, var(--teal) 100%);
+      border-radius: 2.2rem;
+      box-shadow: 0 12px 48px 0 rgba(25,42,81,0.18), 0 2px 12px 0 rgba(150,122,161,0.10);
+      margin-bottom: 2.5rem;
+      padding: 3.5rem 2.5rem 2.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeInUp 1.1s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    .upcycle-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 80%);
+      opacity: 0.18;
+      z-index: 0;
+      animation: floatBg 7s ease-in-out infinite alternate;
+    }
+    .upcycle-hero h1 {
+      font-size: 2.7rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -2px;
+      margin-bottom: 0.7rem;
+      z-index: 1;
+      text-shadow: 0 2px 16px rgba(25,42,81,0.13);
+    }
+    .upcycle-hero .project-detail-subtitle {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+      z-index: 1;
+      font-weight: 500;
+      text-shadow: 0 1px 8px rgba(25,42,81,0.10);
+    }
+    .upcycle-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 1.7rem;
+      box-shadow: 0 4px 32px 0 rgba(25,42,81,0.10);
+      padding: 2.5rem 2rem 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      color: var(--teal);
+      font-size: 1.13rem;
+      position: relative;
+      animation: fadeInUp 1.3s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    .upcycle-card h2 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .upcycle-card ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .upcycle-card hr {
+      border: none;
+      border-top: 1.5px solid var(--accent);
+      margin: 2rem 0 1.5rem 0;
+      opacity: 0.18;
+    }
+    .wow-back-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--primary) 60%, var(--teal) 100%);
+      color: #fff;
+      padding: 1rem 2.7rem;
+      border-radius: 2.5rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 24px 0 rgba(150,122,161,0.18), 0 2px 8px 0 rgba(25,42,81,0.10);
+      transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.13s;
+      letter-spacing: 0.7px;
+      border: none;
+      outline: none;
+      margin: 0 auto 0 auto;
+      margin-top: 1.5rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.5s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    .wow-back-btn::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 180%;
+      height: 180%;
+      background: radial-gradient(circle, var(--secondary) 0%, transparent 80%);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .wow-back-btn:hover::after {
+      opacity: 0.13;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .wow-back-btn:hover, .wow-back-btn:focus {
+      background: linear-gradient(90deg, var(--secondary) 60%, var(--teal) 100%);
+      color: #fff;
+      box-shadow: 0 8px 32px 0 rgba(25,42,81,0.18);
+      transform: translateY(-2px) scale(1.04);
+    }
+    @media (max-width: 700px) {
+      .upcycle-hero {
+        padding: 2rem 0.7rem 1.5rem 0.7rem;
+      }
+      .upcycle-hero h1 {
+        font-size: 1.5rem;
+      }
+      .upcycle-card {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+        font-size: 1rem;
+      }
+    }
+    .back-to-projects-fixed {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+  </style>
+  </head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">T. Kishan</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="project-detail-section">
+    <section class="upcycle-hero">
+      <h1>🚲 UpCycle – E-Commerce Platform for Bicycle Upcycling</h1>
+      <p class="project-detail-subtitle">A sustainability-focused web application for buying, selling, and upcycling refurbished bicycles. Features a StoreFinder to connect users with local repair shops and promote eco-friendly practices.</p>
+    </section>
+    <section class="upcycle-card">
+      <!-- Project Overview -->
+      <div class="project-section bg-primary">
+        <h2 class="section-title">📁 Project Overview</h2>
+        <p class="section-desc">UpCycle is a sustainability-focused web application that encourages users to list, buy, or sell refurbished bicycles. The platform promotes environmentally conscious practices by reducing bicycle waste and connecting users with nearby repair shops or resale opportunities.</p>
+        <p class="section-desc">This was my first group development project, and it played a huge role in shaping how I work in a team, communicate ideas, and overcome real project challenges.</p>
+        <!-- UpCycle Carousel (Consultancy.html style) -->
+        <div class="carousel-container">
+          <button class="carousel-arrow left" onclick="prevSlide()" aria-label="Previous image">&#8592;</button>
+          <img id="carousel-img" class="carousel-image" src="images/UpCycleStoreFinderPage.jpg" alt="UpCycle StoreFinder Page" style="cursor: zoom-in;" />
+          <button class="carousel-arrow right" onclick="nextSlide()" aria-label="Next image">&#8594;</button>
+          <div id="carousel-caption" class="carousel-caption">StoreFinder main page – UpCycle</div>
+        </div>
+      </div>
+      <!-- My Role -->
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">👨‍💻 My Role – StoreFinder Feature</h2>
+        <p class="section-desc">I was part of a team of five developers and was primarily responsible for the <strong>StoreFinder</strong> feature, a tool that helps users locate nearby bicycle repair and retail shops based on their location.</p>
+        <ul class="section-list">
+          <li>Designing Flask routes to dynamically render location-based shop listings</li>
+          <li>Building the page layout using Jinja templating</li>
+          <li>Ensuring smooth and intuitive navigation to the StoreFinder section</li>
+          <li>Collaborating with teammates to integrate this feature with the rest of the app</li>
+        </ul>
+      </div>
+      <!-- Tech Stack -->
+      <div class="project-section bg-primary">
+        <h2 class="section-title">🛠 Tech Stack</h2>
+        <ul class="section-list">
+          <li>Backend: Python (Flask), Jinja</li>
+          <li>Frontend: HTML, CSS</li>
+        </ul>
+      </div>
+      <!-- The Journey -->
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">🚀 The Journey</h2>
+        <p class="section-desc">As my first real team development experience, this project taught me a lot — not just about code, but also about collaboration and persistence.</p>
+        <p class="section-desc">We faced hurdles like coordinating different parts of the app, resolving UI inconsistencies, and adapting our ideas based on feedback. I had to learn how to troubleshoot, communicate clearly, and adapt quickly in a shared project environment. Despite the challenges, we built a functioning prototype that aligned with our vision of promoting sustainability through tech.</p>
+      </div>
+      <!-- What I Learned -->
+      <div class="project-section bg-primary">
+        <h2 class="section-title">📚 What I Learned</h2>
+        <ul class="section-list">
+          <li>How to contribute meaningfully in a team coding environment</li>
+          <li>Flask route design and modular backend logic</li>
+          <li>Collaborative problem-solving and clear communication</li>
+          <li>The value of consistent UI/UX in multi-page apps</li>
+          <li>How to tie technical features to a larger social/environmental goal</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <div class="back-to-projects-fixed">
+    <a href="projects.html" class="wow-back-btn">&#8592; Back to Projects</a>
+  </div>
+  <!-- Apple-style minimal modal for image zoom (moved outside card for true centering) -->
+  <div id="appleLightboxModal" class="apple-lightbox-modal" tabindex="-1">
+    <div class="apple-lightbox-content" role="dialog" aria-modal="true" aria-labelledby="apple-lightbox-caption">
+      <button class="apple-lightbox-close" onclick="closeAppleLightbox()" aria-label="Close image viewer">&times;</button>
+      <img id="apple-lightbox-img" class="apple-lightbox-img" src="" alt="" />
+      <div id="apple-lightbox-caption" class="apple-lightbox-caption"></div>
+    </div>
+  </div>
+  <script>
+    const images = [
+      { src: 'images/UpCycleStoreFinderPage.jpg', caption: 'StoreFinder main page – UpCycle' },
+      { src: 'images/UpCycleStoreFinderPage2.jpg', caption: 'StoreFinder results – UpCycle' },
+      { src: 'images/UpCycleStoreFinderSearchBar.jpg', caption: 'StoreFinder search bar – UpCycle' },
+      { src: 'images/UpCycleHomepage.jpg', caption: 'Homepage – UpCycle' }
+    ];
+    let current = 0;
+    const imgEl = document.getElementById('carousel-img');
+    const captionEl = document.getElementById('carousel-caption');
+    function showSlide(idx) {
+      current = (idx + images.length) % images.length;
+      imgEl.src = images[current].src;
+      imgEl.alt = images[current].caption;
+      captionEl.textContent = images[current].caption;
+    }
+    function prevSlide() { showSlide(current - 1); }
+    function nextSlide() { showSlide(current + 1); }
+    // Apple-style modal (lightbox) logic
+    const appleLightboxModal = document.getElementById('appleLightboxModal');
+    const appleLightboxImg = document.getElementById('apple-lightbox-img');
+    const appleLightboxCaption = document.getElementById('apple-lightbox-caption');
+    function openAppleLightbox() {
+      appleLightboxImg.src = images[current].src;
+      appleLightboxImg.alt = images[current].caption;
+      appleLightboxCaption.textContent = images[current].caption;
+      appleLightboxModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAppleLightbox() {
+      appleLightboxModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    imgEl.addEventListener('click', function(e) {
+      openAppleLightbox();
+    });
+    // Allow closing by clicking outside the content
+    appleLightboxModal.addEventListener('click', function(e) {
+      if (e.target === appleLightboxModal) closeAppleLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!appleLightboxModal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeAppleLightbox();
+    });
+    // Initialize first slide
+    showSlide(0);
+  </script>
+</body>
+</html>

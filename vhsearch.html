@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VHSearch – AI Email Assistant | T. Kishan Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .carousel-container {
+      position: relative;
+      max-width: 540px;
+      margin: 2.5rem auto 2.5rem auto;
+      background: rgba(255,255,255,0.92);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px 0 rgba(25,42,81,0.10);
+      padding: 2.2rem 1.5rem 2.7rem 1.5rem;
+      text-align: center;
+    }
+    .carousel-image {
+      width: 100%;
+      max-width: 480px;
+      max-height: 340px;
+      border-radius: 1.3rem;
+      box-shadow: 0 2px 16px 0 rgba(25,42,81,0.13);
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+      z-index: 1;
+      position: relative;
+      will-change: transform;
+      background: rgba(255,255,255,0.97);
+      padding: 0.7rem;
+      box-sizing: border-box;
+    }
+    .carousel-image:active,
+    .carousel-image:focus,
+    .carousel-image:hover {
+      transform: scale(1.13);
+      box-shadow: 0 8px 32px 0 rgba(150,122,161,0.18);
+    }
+    .carousel-caption {
+      margin-top: 1.3rem;
+      font-size: 1.13rem;
+      color: var(--teal);
+      min-height: 2.5rem;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px 0 rgba(25,42,81,0.10);
+      transition: background 0.2s;
+      z-index: 3;
+    }
+    .carousel-arrow:hover {
+      background: var(--secondary);
+    }
+    .carousel-arrow.left { left: 0.5rem; }
+    .carousel-arrow.right { right: 0.5rem; }
+    /* Apple-style modal for image zoom */
+    .apple-lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.65);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 0.28s cubic-bezier(.4,0,.2,1);
+      opacity: 0;
+      box-sizing: border-box;
+    }
+    .apple-lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+      animation: fadeInAppleModal 0.32s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeInAppleModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .apple-lightbox-content {
+      background: none;
+      border-radius: 1.2rem;
+      box-shadow: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 96vw;
+      max-height: 92vh;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .apple-lightbox-img {
+      display: block;
+      max-width: 90vw;
+      max-height: 75vh;
+      width: auto;
+      height: auto;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 32px 0 rgba(25,42,81,0.13);
+      object-fit: contain;
+      background: rgba(255,255,255,0.97);
+      margin-bottom: 1.1rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: zoom-out;
+      padding: 0.7rem;
+      box-sizing: border-box;
+    }
+    .apple-lightbox-caption {
+      color: #222;
+      font-size: 1.13rem;
+      text-align: center;
+      background: rgba(255,255,255,0.97);
+      border-radius: 0.7rem;
+      box-shadow: 0 2px 12px 0 rgba(25,42,81,0.10);
+      padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+      margin-bottom: 0.5rem;
+      max-width: 80vw;
+      display: inline-block;
+      text-shadow: none;
+    }
+    .apple-lightbox-close {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: rgba(0,0,0,0.32);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 2px 8px 0 rgba(25,42,81,0.10);
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .apple-lightbox-close:hover { background: rgba(0,0,0,0.65); }
+    @media (max-width: 900px) {
+      .carousel-container { max-width: 98vw; padding: 1.2rem 0.2rem 1.5rem 0.2rem; }
+      .carousel-image { max-width: 95vw; max-height: 200px; }
+    }
+    @media (max-width: 600px) {
+      .carousel-container { max-width: 99vw; padding: 0.7rem 0.1rem 1rem 0.1rem; }
+      .carousel-image { max-width: 99vw; max-height: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">T. Kishan</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="project-detail-section">
+    <section class="upcycle-hero">
+      <h1>🤖 VHSearch – AI Email Assistant for VHA Consultants</h1>
+      <p class="project-detail-subtitle">Full-stack AI-powered email assistant developed for VHA Consultants as part of the SCCI AI Innovation Challenge.</p>
+    </section>
+    <section class="upcycle-card">
+      <div class="carousel-container">
+        <button class="carousel-arrow left" onclick="prevSlide()" aria-label="Previous image">&#8592;</button>
+        <img id="carousel-img" class="carousel-image" src="images/VHSearchDraftspage.png" alt="VHSearch Drafts Page" style="cursor: zoom-in;" />
+        <button class="carousel-arrow right" onclick="nextSlide()" aria-label="Next image">&#8594;</button>
+        <div id="carousel-caption" class="carousel-caption">Drafts Page – Manage and continue smart reply drafts.</div>
+      </div>
+      <div class="project-section bg-primary">
+        <h2 class="section-title" style="margin-top:0">📁 Project Overview</h2>
+        <p class="section-desc">VHSearch is a full-stack AI-powered email assistant developed as part of an AI Innovation Challenge hosted by the Singapore Chamber of Commerce & Industry (SCCI). As part of the challenge, our team was matched with a real-world client: VHA Consultants Pte. Ltd., an engineering consultancy based in Singapore.<br><br>
+        VHA, known for their MEP consultancy and project management services, expressed the need for a smarter way to sort and manage high volumes of email. VHSearch was built to address that by helping to streamline workflows using automation and generative AI.</p>
+      </div>
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">👨‍💻 My Role</h2>
+        <p class="section-desc">As the lead developer for the Smart Reply feature, I worked on both frontend and backend development. My key contributions include:</p>
+        <ul class="section-list">
+          <li>Implemented the smart reply flow (draft → save → send)</li>
+          <li>Built React UI components for reply management</li>
+          <li>Developed backend APIs using Node.js and Sequelize ORM</li>
+          <li>Designed the database schema for replies, drafts, and user roles</li>
+          <li>Integrated a generative AI model to suggest relevant responses</li>
+          <li>Focused on validation logic and role-based access</li>
+        </ul>
+      </div>
+      <div class="project-section bg-primary">
+        <h2 class="section-title">🛠 Tech Stack</h2>
+        <ul class="section-list">
+          <li>Frontend: React.js</li>
+          <li>Backend: Node.js + Express</li>
+          <li>Database: MySQL (via Sequelize ORM)</li>
+          <li>AI: Prompt-based generative reply system</li>
+          <li>Tools: GitHub, Postman</li>
+        </ul>
+      </div>
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">🚀 The Journey</h2>
+        <p class="section-desc">This was more than just a school project, it was a collaboration with a real company that had an actual digital need. Working with VHA gave me insight into how AI can help traditional firms like engineering consultancies improve efficiency.<br><br>
+        From developing smart replies to managing user roles and draft states, I got to experience real full-stack problem solving. I also had to factor in client expectations, real use cases, and user accessibility — which made the project even more meaningful.</p>
+      </div>
+      <div class="project-section bg-primary">
+        <h2 class="section-title">📚 What I Learned</h2>
+        <ul class="section-list">
+          <li>React routing and dynamic form handling</li>
+          <li>Sequelize database relationships and queries</li>
+          <li>AI integration using prompt workflows</li>
+          <li>Collaborative coding with GitHub</li>
+          <li>Real-world client communication and iteration</li>
+          <li>Balancing functional features with usability</li>
+        </ul>
+      </div>
+      <div class="project-section bg-secondary">
+        <h2 class="section-title">✅ Outcome (So Far)</h2>
+        <p class="section-desc">The Minimum Viable Product (MVP) of VHSearch supports:</p>
+        <ul class="section-list">
+          <li>Sorting incoming emails for consultants</li>
+          <li>Generating smart replies using AI</li>
+          <li>Saving and continuing replies</li>
+          <li>Role-based access for editing and submitting responses</li>
+        </ul>
+        <p class="section-desc">The experience taught me how to apply my skills to serve real business needs and how AI can be a powerful tool in digital transformation, even for industries like engineering and project consultancy.</p>
+      </div>
+    </section>
+  </main>
+  <!-- Apple-style minimal modal for image zoom (moved outside card for true centering) -->
+  <div id="appleLightboxModal" class="apple-lightbox-modal" tabindex="-1">
+    <div class="apple-lightbox-content" role="dialog" aria-modal="true" aria-labelledby="apple-lightbox-caption">
+      <button class="apple-lightbox-close" onclick="closeAppleLightbox()" aria-label="Close image viewer">&times;</button>
+      <img id="apple-lightbox-img" class="apple-lightbox-img" src="" alt="" />
+      <div id="apple-lightbox-caption" class="apple-lightbox-caption"></div>
+    </div>
+  </div>
+  <div id="appleLightboxModal" class="apple-lightbox-modal" tabindex="-1">
+    <div class="apple-lightbox-content" role="dialog" aria-modal="true" aria-labelledby="apple-lightbox-caption">
+      <button class="apple-lightbox-close" onclick="closeAppleLightbox()" aria-label="Close image viewer">&times;</button>
+      <img id="apple-lightbox-img" class="apple-lightbox-img" src="" alt="" />
+      <div id="apple-lightbox-caption" class="apple-lightbox-caption"></div>
+    </div>
+  </div>
+  <div class="back-to-projects-fixed">
+    <a href="projects.html" class="wow-back-btn">&#8592; Back to Projects</a>
+  </div>
+  <script>
+    const images = [
+      { src: 'images/VHSearchDraftspage.png', caption: 'Drafts Page – Manage and continue smart reply drafts.' },
+      { src: 'images/VHSearchReplypage.png', caption: 'Reply Page – Generate and edit AI-powered smart replies.' },
+      { src: 'images/VHSearchReplypage2.png', caption: 'Reply Email– Context-aware suggestions and reply workflow.' },
+      { src: 'images/VHSearchSentRepliespage.png', caption: 'Sent Replies – View sent replies and manage history.' },
+      { src: 'images/VHSearchSettings.png', caption: 'Settings Page – Email settings and email retrieval.' }
+    ];
+    let current = 0;
+    const imgEl = document.getElementById('carousel-img');
+    const captionEl = document.getElementById('carousel-caption');
+    function showSlide(idx) {
+      current = (idx + images.length) % images.length;
+      imgEl.src = images[current].src;
+      imgEl.alt = images[current].caption;
+      captionEl.textContent = images[current].caption;
+    }
+    function prevSlide() { showSlide(current - 1); }
+    function nextSlide() { showSlide(current + 1); }
+    // Apple-style modal (lightbox) logic
+    const appleLightboxModal = document.getElementById('appleLightboxModal');
+    const appleLightboxImg = document.getElementById('apple-lightbox-img');
+    const appleLightboxCaption = document.getElementById('apple-lightbox-caption');
+    function openAppleLightbox() {
+      appleLightboxImg.src = images[current].src;
+      appleLightboxImg.alt = images[current].caption;
+      appleLightboxCaption.textContent = images[current].caption;
+      appleLightboxModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAppleLightbox() {
+      appleLightboxModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    imgEl.addEventListener('click', function(e) { openAppleLightbox(); });
+    appleLightboxModal.addEventListener('click', function(e) { if (e.target === appleLightboxModal) closeAppleLightbox(); });
+    document.addEventListener('keydown', function(e) { if (!appleLightboxModal.classList.contains('active')) return; if (e.key === 'Escape') closeAppleLightbox(); });
+    showSlide(0);
+  </script>
+</body>
+</html>
